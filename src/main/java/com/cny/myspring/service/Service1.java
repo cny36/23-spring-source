@@ -1,9 +1,8 @@
-package com.cny.myspring.core.service;
+package com.cny.myspring.service;
 
-import com.cny.myspring.core.annotion.MyAutowired;
-import com.cny.myspring.core.annotion.MyComponent;
-import com.cny.myspring.core.annotion.MyScope;
-import com.cny.myspring.core.beans.MyInitializingBean;
+import com.cny.myspring.annotion.MyAutowired;
+import com.cny.myspring.annotion.MyComponent;
+import com.cny.myspring.beans.MyInitializingBean;
 
 /**
  * @author : chennengyuan

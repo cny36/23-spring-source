@@ -1,4 +1,4 @@
-package com.cny.myspring.core.beanpostporcessor;
+package com.cny.myspring.beanpostporcessor;
 
 import org.springframework.beans.BeansException;
 import org.springframework.lang.Nullable;

@@ -1,12 +1,16 @@
-package com.cny.myspring.core.annotion;
+package com.cny.myspring.annotion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+/**
+ * @author chennengyuan
+ */
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MyAutowired {
+@Target({ElementType.TYPE})
+public @interface MyComponentScan {
 
+    String value() default "";
 }

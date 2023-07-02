@@ -1,26 +1,22 @@
-package com.cny.myspring.core;
+package com.cny.myspring;
 
 
-import com.cny.myspring.core.annotion.MyAutowired;
-import com.cny.myspring.core.annotion.MyComponent;
-import com.cny.myspring.core.annotion.MyComponentScan;
-import com.cny.myspring.core.annotion.MyScope;
-import com.cny.myspring.core.beanpostporcessor.BeanPostProcessor;
-import com.cny.myspring.core.beans.MyBeanDefinition;
-import com.cny.myspring.core.beans.MyInitializingBean;
-import com.cny.myspring.core.service.Service1;
+import com.cny.myspring.annotion.MyAutowired;
+import com.cny.myspring.annotion.MyComponent;
+import com.cny.myspring.annotion.MyComponentScan;
+import com.cny.myspring.annotion.MyScope;
+import com.cny.myspring.beanpostporcessor.BeanPostProcessor;
+import com.cny.myspring.beans.MyBeanDefinition;
+import com.cny.myspring.beans.MyInitializingBean;
 
 import java.beans.Introspector;
 import java.io.File;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author : chennengyuan

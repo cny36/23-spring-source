@@ -1,4 +1,4 @@
-package com.cny.myspring.core.beans;
+package com.cny.myspring.beans;
 
 /**
  * @author : chennengyuan

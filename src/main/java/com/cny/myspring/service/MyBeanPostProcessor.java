@@ -1,7 +1,7 @@
-package com.cny.myspring.core.service;
+package com.cny.myspring.service;
 
-import com.cny.myspring.core.annotion.MyComponent;
-import com.cny.myspring.core.beanpostporcessor.BeanPostProcessor;
+import com.cny.myspring.annotion.MyComponent;
+import com.cny.myspring.beanpostporcessor.BeanPostProcessor;
 import org.springframework.beans.BeansException;
 
 /**

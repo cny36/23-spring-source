@@ -1,4 +1,4 @@
-package com.cny.myspring.core.annotion;
+package com.cny.myspring.annotion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

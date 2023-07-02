@@ -1,4 +1,4 @@
-package com.cny.myspring.core.service;
+package com.cny.myspring.service;
 
 /**
  * @author : chennengyuan

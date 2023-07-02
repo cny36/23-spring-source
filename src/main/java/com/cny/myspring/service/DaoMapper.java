@@ -1,6 +1,6 @@
-package com.cny.myspring.core.service;
+package com.cny.myspring.service;
 
-import com.cny.myspring.core.annotion.MyComponent;
+import com.cny.myspring.annotion.MyComponent;
 
 /**
  * @author : chennengyuan

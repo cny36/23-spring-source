@@ -1,8 +1,7 @@
-package com.cny.myspring.core;
+package com.cny.myspring;
 
-import com.cny.myspring.core.MyAnnotationConfigApplicationContext;
-import com.cny.myspring.core.config.ApplicationConfig;
-import com.cny.myspring.core.service.Service1;
+import com.cny.myspring.config.ApplicationConfig;
+import com.cny.myspring.service.Service1;
 
 /**
  * @author : chennengyuan
