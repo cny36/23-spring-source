@@ -114,7 +114,7 @@ public class MyAnnotationConfigApplicationContext {
             URL resource = classLoader.getResource(scanpath);
 
             // TODO 此处中文路径有问题，故写死 正常是 resource.getFile()
-            File file = new File("D:\\项目\\P6程序员\\23-spring-source\\target\\classes\\com\\cny\\myspring\\core\\service");
+            File file = new File("D:\\项目\\P6程序员\\23-spring-source\\target\\classes\\com\\cny\\myspring\\service");
             if (file.isDirectory()) {
                 for (File f : file.listFiles()) {
                     //获取全类名
