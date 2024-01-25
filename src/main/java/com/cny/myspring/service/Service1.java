@@ -15,11 +15,11 @@ public class Service1 implements MyInitializingBean {
     private DaoMapper daoMapper;
 
     public Service1(){
-        System.out.println("Service1 create......");
+        System.out.println("Service1 无参构造 create......");
     }
 
     public void hello() {
-        System.out.println("Service1 hello()");
+        System.out.println("执行方法业务逻辑Service1 hello()");
         daoMapper.daoHello();
     }
 

@@ -1,6 +1,7 @@
 package com.cny.spring;
 
 import com.cny.spring.config.AppConfig;
+import com.cny.spring.service.AopTestService;
 import com.cny.spring.service.OrderService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,5 +23,19 @@ public class Main {
          */
 
         orderService.hello();
+
+        //控制台打印如下：
+        /**
+         * 执行无参构造方法
+         * 执行set方法
+         * BeanPostProcessor before Initialization orderService
+         * 执行初始化操作
+         * BeanPostProcessor after Initialization orderService
+         * 执行方法逻辑：OrderDao hello
+         */
+
+
+        AopTestService aopTestService = (AopTestService) applicationContext.getBean("aopTestService");
+        aopTestService.run();
     }
 }

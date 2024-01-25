@@ -23,6 +23,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MyAnnotationConfigApplicationContext {
 
+    /**
+     * 配置类
+     */
     private Class configClass;
 
     /**
@@ -47,7 +50,7 @@ public class MyAnnotationConfigApplicationContext {
     private void createSingletonObject() throws Exception {
         for (Map.Entry<String, MyBeanDefinition> entry : beanDefinitionMap.entrySet()) {
             MyBeanDefinition beanDefinition = entry.getValue();
-            if("singleton".equals(beanDefinition.getScope())){
+            if ("singleton".equals(beanDefinition.getScope())) {
                 Object object = beanDefinition.getType().newInstance();
 
                 //设置属性
@@ -68,7 +71,7 @@ public class MyAnnotationConfigApplicationContext {
     }
 
     private void doBeforeInit(Object object, MyBeanDefinition beanDefinition) {
-        if(!BeanPostProcessor.class.isAssignableFrom(beanDefinition.getType())){
+        if (!BeanPostProcessor.class.isAssignableFrom(beanDefinition.getType())) {
             for (BeanPostProcessor beanPostProcessor : beanPostProcessorList) {
                 beanPostProcessor.postProcessBeforeInitialization(object, beanDefinition.getBeanname());
             }
@@ -76,7 +79,7 @@ public class MyAnnotationConfigApplicationContext {
     }
 
     private void doAfterInit(Object object, MyBeanDefinition beanDefinition) {
-        if(!BeanPostProcessor.class.isAssignableFrom(beanDefinition.getType())){
+        if (!BeanPostProcessor.class.isAssignableFrom(beanDefinition.getType())) {
             for (BeanPostProcessor beanPostProcessor : beanPostProcessorList) {
                 beanPostProcessor.postProcessAfterInitialization(object, beanDefinition.getBeanname());
             }
@@ -84,7 +87,7 @@ public class MyAnnotationConfigApplicationContext {
     }
 
     private void doInit(Object object) {
-        if(object instanceof MyInitializingBean){
+        if (object instanceof MyInitializingBean) {
             try {
                 ((MyInitializingBean) object).afterPropertiesSet();
             } catch (Exception e) {
@@ -96,7 +99,7 @@ public class MyAnnotationConfigApplicationContext {
     private void doFillProperties(Object object, MyBeanDefinition bean) throws Exception {
         Field[] declaredFields = bean.getType().getDeclaredFields();
         for (Field declaredField : declaredFields) {
-            if(declaredField.isAnnotationPresent(MyAutowired.class)){
+            if (declaredField.isAnnotationPresent(MyAutowired.class)) {
                 declaredField.setAccessible(true);
                 declaredField.set(object, getBean(declaredField.getName()));
             }
@@ -107,7 +110,9 @@ public class MyAnnotationConfigApplicationContext {
     private void scanFile(Class configClass) throws InstantiationException, IllegalAccessException {
         if (configClass.isAnnotationPresent(MyComponentScan.class)) {
             MyComponentScan myComponentScanAnnotation = (MyComponentScan) configClass.getAnnotation(MyComponentScan.class);
-            String packagePath = myComponentScanAnnotation.value();//com.cny.myspring
+
+            //com.cny.myspring
+            String packagePath = myComponentScanAnnotation.value();
 
             ClassLoader classLoader = this.getClass().getClassLoader();
             String scanpath = packagePath.replaceAll("\\.", "/");
@@ -129,7 +134,7 @@ public class MyAnnotationConfigApplicationContext {
                         if (loadClass.isAnnotationPresent(MyComponent.class)) {
 
                             //增加对BeanPostProcessor的判断
-                            if(BeanPostProcessor.class.isAssignableFrom(loadClass)){
+                            if (BeanPostProcessor.class.isAssignableFrom(loadClass)) {
                                 BeanPostProcessor beanPostProcessor = (BeanPostProcessor) loadClass.newInstance();
                                 beanPostProcessorList.add(beanPostProcessor);
                             } else {
@@ -144,7 +149,7 @@ public class MyAnnotationConfigApplicationContext {
                                 MyBeanDefinition beanDefinition = new MyBeanDefinition();
                                 beanDefinition.setType(loadClass);
                                 beanDefinition.setBeanname(beanName);
-                                if(loadClass.isAnnotationPresent(MyScope.class)){
+                                if (loadClass.isAnnotationPresent(MyScope.class)) {
                                     MyScope myScope = loadClass.getAnnotation(MyScope.class);
                                     String scope = myScope.value();
                                     beanDefinition.setScope(scope);
@@ -168,12 +173,12 @@ public class MyAnnotationConfigApplicationContext {
     }
 
     public Object getBean(String beanName) throws Exception {
-        if(!beanDefinitionMap.containsKey(beanName)){
+        if (!beanDefinitionMap.containsKey(beanName)) {
             throw new Exception(beanName + "不存在");
         }
 
         MyBeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
-        if("singleton".equals(beanDefinition.getScope())){
+        if ("singleton".equals(beanDefinition.getScope())) {
             return singletonObjMap.get(beanName);
         }
         return beanDefinition.getType().newInstance();

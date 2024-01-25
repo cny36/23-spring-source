@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public class OrderDao {
 
     public void hello(){
-        System.out.println("OrderDao hello");
+        System.err.println("OrderDao hello");
     }
 }
